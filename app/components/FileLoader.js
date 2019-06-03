@@ -302,7 +302,7 @@ export default class FileLoader extends Component {
     return (
       <Dropdown
         className={styles['filter-overflow']}
-        clearable
+        clearable={true}
         search={true}
         selection={true}
         options={stageOptions}
