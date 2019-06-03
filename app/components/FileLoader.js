@@ -40,6 +40,9 @@ export default class FileLoader extends Component {
     store: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     topNotifOffset: PropTypes.number.isRequired,
+
+    // replay filters
+    changeStageFilter: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -257,6 +260,10 @@ export default class FileLoader extends Component {
     );
   }
 
+  handleStageChange = (e, data) => {
+    this.props.changeStageFilter(data.value);
+  }
+
   renderStageFilter() {
 
     const stageOptions = [
@@ -295,10 +302,12 @@ export default class FileLoader extends Component {
     return (
       <Dropdown
         className={styles['filter-overflow']}
+        clearable
         search={true}
         selection={true}
         options={stageOptions}
         placeholder='Stage'
+        onChange={this.handleStageChange}
       />
     );
   }

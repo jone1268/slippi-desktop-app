@@ -22,7 +22,7 @@ const defaultState = {
     x: 0,
     y: 0,
   },
-  filterStage: null,
+  filterStage: '',
 };
 
 export default function fileLoader(state = defaultState, action) {
