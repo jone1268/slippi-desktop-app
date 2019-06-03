@@ -257,7 +257,7 @@ export default class FileLoader extends Component {
     );
   }
 
-  renderFileFilter() {
+  renderStageFilter() {
 
     const stageOptions = [
       {
@@ -367,7 +367,7 @@ export default class FileLoader extends Component {
         <Scroller topOffset={this.props.topNotifOffset}>
           {this.renderGlobalError()}
           {this.renderFilteredFilesNotif(processedFiles)}
-          {this.renderFileFilter()}
+          {this.renderStageFilter()}
           {this.renderFileSelection(processedFiles)}
         </Scroller>
       </div>
