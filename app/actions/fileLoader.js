@@ -9,9 +9,10 @@ export const LOAD_ROOT_FOLDER = 'LOAD_ROOT_FOLDER';
 export const CHANGE_FOLDER_SELECTION = 'CHANGE_FOLDER_SELECTION';
 export const LOAD_FILES_IN_FOLDER = 'LOAD_FILES_IN_FOLDER';
 export const STORE_SCROLL_POSITION = 'STORE_SCROLL_POSITION';
+export const CHANGE_STAGE_FILTER = 'CHANGE_STAGE_FILTER';
 
 export function loadRootFolder() {
-  return async (dispatch, getState) => { 
+  return async (dispatch, getState) => {
     dispatch({
       type: LOAD_ROOT_FOLDER,
       payload: {},
@@ -138,8 +139,17 @@ async function loadFilesInFolder(folderPath) {
   });
 
   files = await Promise.all(fileProcessors);
-  
+
   // console.log(`Time: ${new Date() - start}ms`);
 
   return files;
+}
+
+export function changeStageFilter(stage) {
+  return {
+    type: CHANGE_STAGE_FILTER,
+    payload: {
+      stage: stage,
+    },
+  };
 }
