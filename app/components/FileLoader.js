@@ -11,6 +11,7 @@ import {
   Segment,
   Message,
   Loader,
+  Dropdown,
 } from 'semantic-ui-react';
 import styles from './FileLoader.scss';
 import FileRow from './FileRow';
@@ -256,6 +257,52 @@ export default class FileLoader extends Component {
     );
   }
 
+  renderFileFilter() {
+
+    const stageOptions = [
+      {
+        key: 'Battlefield',
+        text: 'Battlefield',
+        value: 'Battlefield',
+      },
+      {
+        key: 'Dream Land N64',
+        text: 'Dream Land N64',
+        value: 'Dream Land N64',
+      },
+      {
+        key: 'Final Destination',
+        text: 'Final Destination',
+        value: 'Final Destination',
+      },
+      {
+        key: 'Fountain of Dreams',
+        text: 'Fountain of Dreams',
+        value: 'Fountain of Dreams',
+      },
+      {
+        key: 'Pokémon Stadium',
+        text: 'Pokémon Stadium',
+        value: 'Pokémon Stadium',
+      },
+      {
+        key: 'Yoshi\'s Island',
+        text: 'Yoshi\'s Island',
+        value: 'Yoshi\'s Island',
+      },
+    ];
+
+    return (
+      <Dropdown
+        className={styles['filter-overflow']}
+        search={true}
+        selection={true}
+        options={stageOptions}
+        placeholder='Stage'
+      />
+    );
+  }
+
   renderFileSelection(files) {
     const store = this.props.store || {};
     if (store.isLoading) {
@@ -320,6 +367,7 @@ export default class FileLoader extends Component {
         <Scroller topOffset={this.props.topNotifOffset}>
           {this.renderGlobalError()}
           {this.renderFilteredFilesNotif(processedFiles)}
+          {this.renderFileFilter()}
           {this.renderFileSelection(processedFiles)}
         </Scroller>
       </div>
